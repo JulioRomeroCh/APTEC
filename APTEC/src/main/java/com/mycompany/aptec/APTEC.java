@@ -1,4 +1,3 @@
-
 package com.mycompany.aptec;
 
 
@@ -8,18 +7,22 @@ public class APTEC {
    * @param args 
    */
     public static void main (String [] args){
-        Task t = new Task();
-        t.setID(1);
-        t.setDescription("Pack the inventory");
-        t.setComplexity("Hard");
-        t.setSupervisor("Jose Blanco");
-        t.setTaskType("Operative");
+        
+        String sCadena = "Hola Mundo";
+        String sSubCadena = sCadena.substring(0,1);
+        System.out.println(sSubCadena);
+        Task t1 = new Task();
+        t1.setID(1);
+        t1.setDescription("Pack the inventory");
+        t1.setComplexity("Hard");
+        t1.setSupervisor("Jose Blanco");
+        t1.setTaskType("Operative");
         
         Task t2 = new Task();
         t2.setID(2);
         t2.setDescription("Buy a new home");
         t2.setComplexity("Easy");
-        t2.setSupervisor("Sebas Córdoba");
+        t2.setSupervisor("Sebastián Córdoba");
         t2.setTaskType("Operative");
         
         Task t3 = new Task();
@@ -29,19 +32,16 @@ public class APTEC {
         t3.setSupervisor("Jose Blanco");
         t3.setTaskType("Operative");
         
-        
         TaskList list = new TaskList();
-        list.append(t);
+        list.append(t1);
         list.append(t2);
         list.append(t3);
-        
-  
-        
+               
         GraphAdjencyMatrix matrix = new GraphAdjencyMatrix(list.size());
-        matrix.add(0, 1, t);
-        matrix.add(0, 1, t);
+        matrix.add(0, 1, t1);
+        matrix.add(0, 1, t1);
         
-        matrix.add(0, 2, t);
+        matrix.add(0, 2, t1);
         
         matrix.add(1, 2, t2);
         matrix.add(1, 0, t2);
@@ -50,8 +50,6 @@ public class APTEC {
         matrix.add(2,1, t3);
         
         matrix.print();
-
-    
-    
-}
+  
+    }
 }

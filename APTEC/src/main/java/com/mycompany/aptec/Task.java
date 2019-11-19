@@ -1,4 +1,3 @@
-
 package com.mycompany.aptec;
 
 /**
@@ -6,6 +5,7 @@ package com.mycompany.aptec;
  * @author J.I
  */
 public class Task {
+
     private int ID;
     private String description;
     private String complexity;
@@ -82,5 +82,5 @@ public class Task {
         this.taskType = taskType;
     }
 //    
-    
+
 }

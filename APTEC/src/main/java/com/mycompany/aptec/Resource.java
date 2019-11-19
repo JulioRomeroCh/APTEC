@@ -1,4 +1,3 @@
-
 package com.mycompany.aptec;
 
 /**
@@ -6,6 +5,7 @@ package com.mycompany.aptec;
  * @author J.I
  */
 public class Resource {
+
     private long ID;
     private String resourceName;
     private int capacity;
@@ -81,6 +81,5 @@ public class Resource {
     public void setSupervisor(int supervisor) {
         this.supervisor = supervisor;
     }
-    
-    
+
 }

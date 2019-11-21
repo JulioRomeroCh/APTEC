@@ -1,5 +1,5 @@
 package com.mycompany.aptec;
-//
+//Imports
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -9,31 +9,34 @@ import java.awt.RenderingHints;
 import static com.mycompany.aptec.Graphical_User_Interface.jTextField1;
 
 
-
-public class Pintar {   
+//Clase para pintar los nodos en la interfaz
+public class Paint {   
     Color color;
-    private String iden;
+    private String item;
+    
+    //Get's y Set's
     
     /**
-     * @return the iden
+     * @return the item
      */
-    public String getIden() {
-        return iden;
+    public String getItem() {
+        return item;
     }
 
     /**
-     * @param iden the iden to set
+     * @param item the iden to set
      */
-    public void setIden(String iden) {
-        this.iden = iden;
+    public void setItem(String item) {
+        this.item = item;
     }
     
-        
-    public Pintar(){
+     //Constructor   
+    public Paint(){
                 
     }
     
-   public static void pintarCirculo(Graphics g,int x,int y, String n){
+    //Pinta los círculos en la interfaz
+   public static void paintCircle(Graphics g,int x,int y, String n){
         String GetText = jTextField1.getText();
        ((Graphics2D)g).setColor(Color.ORANGE);
         ((Graphics2D)g).setStroke(new BasicStroke(4));       
@@ -41,13 +44,13 @@ public class Pintar {
         //((Graphics2D)g).setColor(Color.BLACK);
         //((Graphics2D)g).drawOval(x, y, 20, 20);
         ((Graphics2D)g).setColor(Color.black);
-        Font fuente=new Font("Monospaced",Font.BOLD, 16);
-        g.setFont(fuente);
+        Font font=new Font("Monospaced",Font.BOLD, 16);
+        g.setFont(font);
         ((Graphics2D)g).drawString(GetText, x, y);
 
     }    
-  
-  public static void pintarLinea(Graphics g, int x1,int y1,int x2,int y2,int tam){
+  //Pinta las aristas en la interfaz
+  public static void paintLine(Graphics g, int x1,int y1,int x2,int y2,int tam){
         int xAux = 0; int yAux = 0; 
         ((Graphics2D)g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,  RenderingHints.VALUE_ANTIALIAS_ON);
         BasicStroke stroke = new BasicStroke(2);
@@ -66,7 +69,8 @@ public class Pintar {
         g.setFont(fuente);
       ((Graphics2D)g).drawString(String.valueOf(tam), xAux, yAux);
   }   
-  public static void pintarCamino(Graphics g, int x1,int y1,int x2,int y2, Color color){
+  //Pinta el camino en la interfaz
+  public static void paintPath(Graphics g, int x1,int y1,int x2,int y2, Color color){
       ((Graphics2D)g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,  RenderingHints.VALUE_ANTIALIAS_ON);
         BasicStroke stroke = new BasicStroke(2);
         ((Graphics2D)g).setStroke(stroke);
@@ -74,7 +78,9 @@ public class Pintar {
         g.drawLine(x1+10, y1+10, x2+10, y2+10);
         
   }
-   public static void clickSobreNodo(Graphics g,int x,int y,String n,Color co){
+  
+  //Permite hacer "click" sobre un nodo
+   public static void clickOverNode(Graphics g,int x,int y,String n,Color co){
         
        ((Graphics2D)g).setColor(co);
         ((Graphics2D)g).setStroke(new BasicStroke(4));       

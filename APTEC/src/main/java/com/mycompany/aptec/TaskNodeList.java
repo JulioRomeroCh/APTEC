@@ -7,8 +7,8 @@ public class TaskNodeList {
 
     private Task element;
     private TaskNodeList next;
+    
     //Builder
-
     public TaskNodeList () {
         this.element = null;
         this.next = null;

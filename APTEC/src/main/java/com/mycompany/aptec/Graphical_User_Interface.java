@@ -5,23 +5,23 @@ import javax.swing.JOptionPane;
 //
 public class Graphical_User_Interface extends javax.swing.JFrame {
 
-    Pintar pintar = new Pintar();
-    Arboles arboles = new Arboles();
+    Paint pintar = new Paint();
+    Graphs arboles = new Graphs();
     TaskQueue tq = new TaskQueue();
 
     //System.out.println (combo_6_text_recortado);
     int count = 0;
 
-    public static void R_repaint(int tope, Arboles arboles) {
+    public static void R_repaint(int tope, Graphs arboles) {
         for (int j = 0; j < tope; j++) {
             for (int k = 0; k < tope; k++) {
-                if (arboles.getmAdyacencia(j, k) == 1) {
-                    Pintar.pintarLinea(jPanel2.getGraphics(), arboles.getCordeX(j), arboles.getCordeY(j), arboles.getCordeX(k), arboles.getCordeY(k), arboles.getmCoeficiente(j, k));
+                if (arboles.getmAdjency(j, k) == 1) {
+                    Paint.paintLine(jPanel2.getGraphics(), arboles.getCoordX(j), arboles.getCoordY(j), arboles.getCoordX(k), arboles.getCoordY(k), arboles.getmCoefficient(j, k));
                 }
             }
         }
         for (int j = 0; j < tope; j++) {
-            Pintar.pintarCirculo(jPanel2.getGraphics(), arboles.getCordeX(j), arboles.getCordeY(j), String.valueOf(arboles.getNombre(j)));
+            Paint.paintCircle(jPanel2.getGraphics(), arboles.getCoordX(j), arboles.getCoordY(j), String.valueOf(arboles.getName(j)));
         }
     }
 
@@ -31,9 +31,9 @@ public class Graphical_User_Interface extends javax.swing.JFrame {
         int nodoOrigen = 0;
         try {
             nodoOrigen = Integer.parseInt(combo_5_text_recortado);
-            System.out.println("ZORRA" + nodoOrigen);
+            
             if (nodoOrigen >= tope) {
-                JOptionPane.showMessageDialog(null, "" + noExiste + "\nDebe de ingresar  un Nodo existente");
+                JOptionPane.showMessageDialog(null, "" + noExiste + "\n Plese insert a created node ");
                 nodoOrigen = ingresarNodoOrigen(nodoOrige, noExiste, tope);
             }
         } catch (Exception ex) {
@@ -49,9 +49,9 @@ public class Graphical_User_Interface extends javax.swing.JFrame {
         int nodoDestino = 0;
         try {
             nodoDestino = Integer.parseInt(combo_6_text_recortado);
-            System.out.println("ZORRA" + nodoDestino);
+        
             if (nodoDestino >= tope) {
-                JOptionPane.showMessageDialog(null, "" + noExiste + "\nDebe de ingresar  un Nodo existente");
+                JOptionPane.showMessageDialog(null, "" + noExiste + "\nPlese insert a created node");
                 nodoDestino = ingresarNodoOrigen(nodoDesti, noExiste, tope);
             }
         } catch (Exception ex) {
@@ -65,7 +65,7 @@ public class Graphical_User_Interface extends javax.swing.JFrame {
         try {
             tamano = Integer.parseInt(JOptionPane.showInputDialog("" + tama));
             if (tamano < 1) {
-                JOptionPane.showMessageDialog(null, "Debe Ingresar un Tamaño Aceptado..");
+                JOptionPane.showMessageDialog(null, "Please insert a permited size node");
                 tamano = ingresarTamano(tama);
             }
         } catch (Exception ex) {
@@ -77,20 +77,20 @@ public class Graphical_User_Interface extends javax.swing.JFrame {
     public boolean cicDerechoSobreNodo(int xxx, int yyy) {
 
         for (int j = 0; j < tope; j++) {
-            if ((xxx + 2) > arboles.getCordeX(j) && xxx < (arboles.getCordeX(j) + 13) && (yyy + 2) > arboles.getCordeY(j) && yyy < (arboles.getCordeY(j) + 13)) {
+            if ((xxx + 2) > arboles.getCoordX(j) && xxx < (arboles.getCoordX(j) + 13) && (yyy + 2) > arboles.getCoordY(j) && yyy < (arboles.getCoordY(j) + 13)) {
 
                 if (n == 0) {
                     id = j;
                     R_repaint(tope, arboles);
-                    Pintar.clickSobreNodo(jPanel2.getGraphics(), arboles.getCordeX(j), arboles.getCordeY(j), null, Color.orange);
+                    Paint.clickOverNode(jPanel2.getGraphics(), arboles.getCoordX(j), arboles.getCoordY(j), null, Color.orange);
                     n++;
                 } else {
                     id2 = j;
                     n++;
-                    Pintar.clickSobreNodo(jPanel2.getGraphics(), arboles.getCordeX(j), arboles.getCordeY(j), null, Color.orange);
+                    Paint.clickOverNode(jPanel2.getGraphics(), arboles.getCoordX(j), arboles.getCoordY(j), null, Color.orange);
                     if (id == id2) {
                         n = 0;
-                        Pintar.pintarCirculo(jPanel2.getGraphics(), arboles.getCordeX(id), arboles.getCordeY(id), String.valueOf(arboles.getNombre(id)));
+                        Paint.paintCircle(jPanel2.getGraphics(), arboles.getCoordX(id), arboles.getCoordY(id), String.valueOf(arboles.getName(id)));
                         id = -1;
                         id2 = -1;
                     }
@@ -684,7 +684,7 @@ public class Graphical_User_Interface extends javax.swing.JFrame {
 
         if (jTextField1.getText().equals("") || jTextField2.getText().equals("") || jTextField3.getText().equals("") || jTextField4.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Error, complete all the fields");
-        } else {
+        } else{ 
             int xxx, yyy;
             xxx = evt.getX();
             yyy = evt.getY();
@@ -693,20 +693,20 @@ public class Graphical_User_Interface extends javax.swing.JFrame {
                 clicIzqSobreNodo(xxx, yyy);
                 if (nn == 2) {
                     nn = 0;
-                    Algoritmo_Dijkstra Dijkstra = new Algoritmo_Dijkstra(arboles, tope, permanente, nodoFin);
+                    Dijkstra_Algorithm Dijkstra = new Dijkstra_Algorithm(arboles, tope, permanente, nodoFin);
                     Dijkstra.dijkstra();
 
                 }
             } else {
                 if (!cicDerechoSobreNodo(xxx, yyy)) {
                     if (tope < 50) {
-                        arboles.setCordeX(tope, xxx);
-                        arboles.setCordeY(tope, yyy);
-                        arboles.setNombre(tope, tope);
-                        Pintar.pintarCirculo(jPanel2.getGraphics(), arboles.getCordeX(tope), arboles.getCordeY(tope), String.valueOf(arboles.getNombre(tope)));
+                        arboles.setCoordX(tope, xxx);
+                        arboles.setCoordY(tope, yyy);
+                        arboles.setName(tope, tope);
+                        Paint.paintCircle(jPanel2.getGraphics(), arboles.getCoordX(tope), arboles.getCoordY(tope), String.valueOf(arboles.getName(tope)));
                         tope++;
                     } else {
-                        JOptionPane.showMessageDialog(null, "Se ha llegado al Maximo de nodos..");
+                        JOptionPane.showMessageDialog(null, "You have reach the max size of the nodes");
                     }
                 }
 
@@ -732,12 +732,10 @@ public class Graphical_User_Interface extends javax.swing.JFrame {
                 jTextField2.setText("");
                 jTextField3.setText("");
                 jTextField4.setText("");
-            }
-
+            
         }
-
     }//GEN-LAST:event_jPanel2MousePressed
-
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         int x;
@@ -757,14 +755,14 @@ public class Graphical_User_Interface extends javax.swing.JFrame {
         ta = Integer.parseInt(jTextField5.getText());
 
         if (x == y) {
-            JOptionPane.showMessageDialog(null, "Error.. Debe digitar un nodo diferente a : " + y);
+            JOptionPane.showMessageDialog(null, "Error.. You have to insert a node different of : " + y);
         } else if (x < 0 || y < 0) {
-            JOptionPane.showMessageDialog(null, "Error.. Nodos No validos ");
+            JOptionPane.showMessageDialog(null, "Error.. Not permited nodes");
         } else {
-            arboles.setmAdyacencia(x, y, 1);
-            arboles.setmAdyacencia(y, x, 1);
+            arboles.setmAdjency(x, y, 1);
+            arboles.setmAdjency(y, x, 1);
             jTextField5.setText("");
-            Pintar.pintarLinea(Graphical_User_Interface.jPanel2.getGraphics(), arboles.getCordeX(x), arboles.getCordeY(x), arboles.getCordeX(y), arboles.getCordeY(y), ta);
+            Paint.paintLine(Graphical_User_Interface.jPanel2.getGraphics(), arboles.getCoordX(x), arboles.getCoordY(x), arboles.getCoordX(y), arboles.getCoordY(y), ta);
 
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -818,18 +816,18 @@ public class Graphical_User_Interface extends javax.swing.JFrame {
         if (tope >= 2) {
             permanente = Integer.parseInt(combo_5_text_recortado);//ingresarNodoOrigen("Ingrese Nodo Origen..", "nodo Origen No existe", tope);// hacemos el llamano de la funcion         
             nodoFin = Integer.parseInt(combo_6_text_recortado);//ingresarNodoDestino("Ingrese Nodo Fin..", "nodo fin No existe", tope);
-            Algoritmo_Dijkstra Dijkstra = new Algoritmo_Dijkstra(arboles, tope, permanente, nodoFin);
+            Dijkstra_Algorithm Dijkstra = new Dijkstra_Algorithm (arboles, tope, permanente, nodoFin);
             Dijkstra.dijkstra();
         } else {
-            JOptionPane.showMessageDialog(null, "Se deben de crear mas nodos ... ");
+            JOptionPane.showMessageDialog(null, "You have to create more nodes");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (tope < 1) {
-            JOptionPane.showMessageDialog(null, "Aun no se ha creado Un nodo");
+            JOptionPane.showMessageDialog(null, "You haven't created any node");
         } else {
-            Algoritmo_Prim Prim = new Algoritmo_Prim(arboles, tope, aristaMayor);
+            Prim_Algorithm Prim = new Prim_Algorithm (arboles, tope, aristaMayor);
             Prim.prim();
             //jtacumulado.setText("" + Prim.getCumulado());
         }

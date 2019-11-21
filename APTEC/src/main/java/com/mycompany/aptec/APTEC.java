@@ -1,5 +1,5 @@
 package com.mycompany.aptec;
-
+//
 
 public class APTEC {
   /**
@@ -11,6 +11,13 @@ public class APTEC {
         String sCadena = "Hola Mundo";
         String sSubCadena = sCadena.substring(0,1);
         System.out.println(sSubCadena);
+        
+        
+        String origen = (Integer.toString(1) + "(" + 456 + ")");
+        int largo_origen = origen.length()-1;
+        String recortado= origen.substring(2, largo_origen);
+        System.out.println("Recor:" + recortado);
+        
         Task t1 = new Task();
         t1.setID(1);
         t1.setDescription("Pack the inventory");

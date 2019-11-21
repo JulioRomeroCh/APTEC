@@ -1,5 +1,5 @@
 package com.mycompany.aptec;
-
+//
 public class TaskQueue {
 
     private TaskNodeQueue front;
@@ -64,6 +64,17 @@ public class TaskQueue {
         return result;
     }
 
+    public Task ObtenerPasajero() {
+        TaskNodeQueue temp = this.front.getNext();
+        Task res = null;
+        while (temp != null) {
+            res = temp.getElement();
+            temp = temp.getNext();
+        }
+        return res;
+    }
+    
+
     public String GetID() {
         TaskNodeQueue temp = this.front.getNext();
         String result = "";
@@ -88,7 +99,7 @@ public class TaskQueue {
         TaskNodeQueue temp = this.front.getNext();
         String result = "";
         while (temp != null) {
-            result = result + temp.getElement().getDescription() + ",";
+            result = result + temp.getElement().getComplexity() + ",";
             temp = temp.getNext();
         }
         return result;

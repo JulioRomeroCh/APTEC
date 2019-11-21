@@ -1,5 +1,5 @@
 package com.mycompany.aptec;
-
+//
 public class LinkedListResource {
 
     /**

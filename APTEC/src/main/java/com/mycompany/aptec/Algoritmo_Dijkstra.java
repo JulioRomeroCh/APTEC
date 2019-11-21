@@ -1,6 +1,6 @@
 package com.mycompany.aptec;
 
-
+//
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import static com.mycompany.aptec.Graphical_User_Interface.jPanel2;
@@ -32,13 +32,13 @@ public class Algoritmo_Dijkstra {
     }
         
     public void dijkstra(){ 
-         for (int i = 0; i < tope; i++)  // creamos el vector nodo del tamaño de tope el cual tiene el numero de nodo pintados 
-                    nodo[i]= new Nodo(); 
+         for (int i = 0; i < tope; i++) 
+                    nodo[i]= new Nodo();
          
         if(permanente != nodoFin){
-             jPanel2.paint(jPanel2.getGraphics());
-             R_repaint(tope, arboles);   
-             Pintar.clickSobreNodo(jPanel2.getGraphics(), arboles.getCordeX(permanente), arboles.getCordeY(permanente), null,Color.GREEN); // pinta de color GREEN los nodos
+             //jPanel2.paint(jPanel2.getGraphics());
+             //R_repaint(tope, arboles);   
+             Pintar.clickSobreNodo(jPanel2.getGraphics(), arboles.getCordeX(permanente), arboles.getCordeY(permanente), null,Color.GREEN);
             
         
             nodo[permanente].setVisitado(true);        
@@ -46,7 +46,7 @@ public class Algoritmo_Dijkstra {
             
             do{            
               subAcomulado=0;
-              auxAumulado = 2000000000; // lo igualamos a esta cifra ya q el acomulado de los nodos, supuestamente  nunca sera mayor 
+              auxAumulado = 20000;
               nodo[permanente].setEtiqueta(true); 
               for (int j = 0; j < tope; j++) {
                   if(arboles.getmAdyacencia(j, permanente)==1){
@@ -79,7 +79,7 @@ public class Algoritmo_Dijkstra {
            if(auxi.getPredecesor() == null )
              JOptionPane.showMessageDialog(null,"No se Pudo LLegar Al Nodo "+nodoFin);          
           while(auxi.getPredecesor() != null){           
-              Pintar.pintarCamino(jPanel2.getGraphics(), arboles.getCordeX(auxi.getNombre()), arboles.getCordeY(auxi.getNombre()), arboles.getCordeX(auxi.getPredecesor().getNombre()), arboles.getCordeY(auxi.getPredecesor().getNombre()),Color.GREEN);
+              Pintar.pintarCamino(jPanel2.getGraphics(), arboles.getCordeX(auxi.getNombre()), arboles.getCordeY(auxi.getNombre()), arboles.getCordeX(auxi.getPredecesor().getNombre()), arboles.getCordeY(auxi.getPredecesor().getNombre()),Color.RED);
               Pintar.clickSobreNodo(jPanel2.getGraphics(), arboles.getCordeX(auxi.getNombre()), arboles.getCordeY(auxi.getNombre()), null,Color.GREEN);
              auxi=auxi.getPredecesor();              
           }  

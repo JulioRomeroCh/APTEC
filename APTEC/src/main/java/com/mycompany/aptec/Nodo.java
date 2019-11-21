@@ -1,20 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package com.mycompany.aptec;
 
-/**
- *
- * @author fredy-18
- */
+//
 public class Nodo {    
    private  int nombre ;
    private boolean visitado ;
    private boolean etiqueta;
-   private int acumulado; // lleva el acoulado de cada nodo
+   private int acumulado;
    private Nodo Predecesor;
    
    public Nodo(){

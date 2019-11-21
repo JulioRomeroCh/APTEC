@@ -1,10 +1,6 @@
 
 package com.mycompany.aptec;
-
-/**
- *
- * @author KevRj
- */
+//
 public class TaskNodeList {
     
 //atributes

@@ -1,9 +1,5 @@
 package com.mycompany.aptec;
-
-/**
- *
- * @author J.I
- */
+//
 public class Task {
 
     private int ID;

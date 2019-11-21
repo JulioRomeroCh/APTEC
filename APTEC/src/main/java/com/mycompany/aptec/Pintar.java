@@ -1,5 +1,5 @@
 package com.mycompany.aptec;
-
+//
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -44,8 +44,7 @@ public class Pintar {
         Font fuente=new Font("Monospaced",Font.BOLD, 16);
         g.setFont(fuente);
         ((Graphics2D)g).drawString(GetText, x, y);
-        
-         
+
     }    
   
   public static void pintarLinea(Graphics g, int x1,int y1,int x2,int y2,int tam){
@@ -80,8 +79,8 @@ public class Pintar {
        ((Graphics2D)g).setColor(co);
         ((Graphics2D)g).setStroke(new BasicStroke(4));       
         ((Graphics2D)g).fillOval(x, y, 15, 15);        
-        ((Graphics2D)g).setColor(Color.BLACK);
-        ((Graphics2D)g).drawOval(x, y, 15, 15);
+        //((Graphics2D)g).setColor(Color.BLACK);
+        //((Graphics2D)g).drawOval(x, y, 15, 15);
          
     }
 

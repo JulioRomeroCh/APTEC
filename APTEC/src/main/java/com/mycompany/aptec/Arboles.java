@@ -1,15 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.mycompany.aptec;
-
-/**
- *
- * @author fredy_000
- */
+//
 public class Arboles {
    private int mCoeficiente[][] = new int [51][51];
    private int mAdyacencia [][] = new int [51][51];

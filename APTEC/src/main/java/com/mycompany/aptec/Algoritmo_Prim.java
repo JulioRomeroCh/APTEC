@@ -1,8 +1,9 @@
 package com.mycompany.aptec;
-
+//
 import static com.mycompany.aptec.Graphical_User_Interface.R_repaint;
 import static com.mycompany.aptec.Graphical_User_Interface.ingresarNodoOrigen;
 import static com.mycompany.aptec.Graphical_User_Interface.jPanel2;
+import static com.mycompany.aptec.Graphical_User_Interface.jTextField11;
 import java.awt.Color;
 
 public class Algoritmo_Prim {
@@ -39,12 +40,11 @@ public class Algoritmo_Prim {
     }
 
     public void prim() {
-        this.nodoOrigen = ingresarNodoOrigen("Ingrese Nodo Origen..", "nodo Origen No existe", tope);
-        jPanel2.paint(jPanel2.getGraphics());
-        R_repaint(tope, arboles);
+        this.nodoOrigen = Integer.parseInt(jTextField11.getText());
+        //jPanel2.paint(jPanel2.getGraphics());
+        //R_repaint(tope, arboles);
         arboles.crearEnArbol(tope);
         arboles.setEnArbol(0, nodoOrigen);
-        //algoritmo de Prim ---->>
         do {
             this.aristaMenor = this.arsitaMayor;
             this.fin = 2;
@@ -69,7 +69,7 @@ public class Algoritmo_Prim {
                         this.estaNodo = false;
                     }
                 }
-            }//fin  for (int j = 0; j < tamano; j++)              
+            }             
             if (aumentaTamano == true) {
                 Pintar.pintarCamino(jPanel2.getGraphics(), arboles.getCordeX(nodoApuntador), arboles.getCordeY(nodoApuntador), arboles.getCordeX(nodoApuntado), arboles.getCordeY(nodoApuntado), Color.red);
                 Pintar.clickSobreNodo(jPanel2.getGraphics(), arboles.getCordeX(nodoApuntador), arboles.getCordeY(nodoApuntador), null, Color.red);
